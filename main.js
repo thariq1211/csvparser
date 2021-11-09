@@ -40,18 +40,7 @@ function download_csv_file(csvFileData) {
 }
 const fetchPerformace = async () => {
   try {
-    const response = await fetch(
-      "https://e-verify.alpabit.com:5005/api/Download/CSV/SPVPerformanceByDate",
-      {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          supervisor_name: "spv1",
-          start_date: "2021-01-01",
-          end_date: "2021-12-31"
-        })
-      }
-    );
+    const response = await fetch("somecsvapi", { method: "GET" });
     const data = await response.text();
     const parsed = parseCSV(data);
     download_csv_file(parsed);
